@@ -35,7 +35,9 @@ const loctors = {
 
     EXTRATO: {
         FN_XP_BUSCA_ELEMENTO: (elemento,valor) => `//span[contains(.,'${elemento}')]/following-sibling::small[contains(.,'${valor}')]`,
-        FN_XP_BTN_EXCLUIR_MOVIMENTACAO: nomeConta => `//span[contains(., '${nomeConta}')]/../../..//i[@class="far fa-trash-alt"]`
+        FN_XP_BTN_EXCLUIR_MOVIMENTACAO: nomeConta => `//span[contains(., '${nomeConta}')]/../../..//i[@class="far fa-trash-alt"]`,
+        FN_XP_BTN_ALTERAR_MOVIMENTACAO: nomeConta => `//span[contains(., '${nomeConta}')]/../../..//i[@class="fas fa-edit"]`
+
     },
 
     SALDO: {
