@@ -40,6 +40,7 @@ describe('Acessar a tela de conta',() => {
             .and('contain.text', 'Erro: Error: Request failed with status code 400')
     })
 
+    
     it('Deve excluir conta', () => {
         cy.acessarMenuConta()
         cy.excluirConta('Excluir conta')
@@ -79,7 +80,8 @@ describe('Acessar a tela de conta',() => {
         
         cy.get(loc.MENU.EXTRATO).click()
         cy.xpath(loc.EXTRATO.FN_XP_BTN_ALTERAR_MOVIMENTACAO('Movimentacao 1, calculo saldo')).click()
-        cy.wait(1000)
+        
+        cy.get(loc.MOVIMENTACAO.DESCRICAO).should('have.value','Movimentacao 1, calculo saldo')
         cy.get(loc.MOVIMENTACAO.STATUS).click()
         cy.get(loc.MOVIMENTACAO.BTN_SALVAR_MOVIMENTACAO).click()
 
@@ -93,12 +95,11 @@ describe('Acessar a tela de conta',() => {
         .should('exist')
     })
 
-    it.only('Deve remover uma movimentação',() => {
+    it('Deve remover uma movimentação',() => {
         cy.get(loc.MENU.EXTRATO).click()
         cy.xpath(loc.EXTRATO.FN_XP_BTN_EXCLUIR_MOVIMENTACAO('Movimentacao para exclusao')).click()
         cy.get(loc.MENSAGE)
             .should('be.visible')
             .and('contain.text','Movimentação removida com sucesso!')
- 
     })
 })  

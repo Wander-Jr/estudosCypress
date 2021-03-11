@@ -47,3 +47,20 @@ Cypress.Commands.add('clickAlert',(locator, message) =>{
             expect(msg).to.be.equal(message);
         });
 })
+
+Cypress.Commands.add('getToken',(email, senha) => {
+    cy.request({ // Gerando o token
+        method: 'POST',
+        url: 'https://barrigarest.wcaquino.me/signin',
+        body:{
+            email: email,
+            redirecionar: false,
+            senha: senha
+        }
+    }).its('body.token').should('not.be.empty')
+        .then(token => {
+            return token
+        })
+
+    
+})
